@@ -3,180 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Quiz</title>
+    <title>FAMOUS MOVIES QUOTES</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        * {
             margin: 0;
-            background-color: #0CC0DF; /* Background color */
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container {
+
+        body {
+            font-family: Arial, sans-serif; /* Standard font */
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            width: 40%;
-            max-width: 800px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow */
-            padding: 20px;
-        }
-        img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            cursor: pointer;
-            border: 5px solid #0CC0DF; /* Outer blue border color */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .qa-box {
-            margin-top: 20px;
+            align-items: center;
+            height: 100vh;
+            background-color: transparent; /* Fully transparent background */
+            color: black; /* Standard text color */
             text-align: center;
         }
-        .question {
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
+
+        #quiz-container {
+            background-color: transparent; /* Fully transparent container */
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
         }
+
+        #logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
         .answer {
-            font-size: 1.2em;
-            color: #555;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Text shadow */
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: white; /* Change the answer color to white */
+        }
+
+        #next-button {
+            background-color: white; /* Change background color to white */
+            color: black; /* Change text color to black for visibility */
+            border: 2px solid #ff9900; /* Optional: Add a border for better visibility */
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #next-button:hover {
+            background-color: #ffcc00; /* Change hover color for better effect */
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fadeOut {
+            animation: fadeOut 0.5s forwards;
+        }
+
+        .fadeIn {
+            animation: fadeIn 0.5s forwards;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img id="quizImage" src="https://i.imgur.com/8CWDdKP.png" alt="Quiz Image">
-        <div class="qa-box">
-            <div id="question" class="question">Click the image to get a question!</div>
-            <div id="answer" class="answer"></div>
-        </div>
+
+<div id="quiz-container">
+    <img id="logo" src="https://i.imgur.com/cyZ0Z21.png" alt="George Michael Logo">
+    <h1>FAMOUS MOVIES QUOTES</h1>
+    <div id="question-container">
+        <div class="question" id="question">Loading question...</div>
+        <div class="answer" id="answer">Loading answer...</div>
+        <button id="next-button" onclick="nextQuestion()">Next Question</button>
     </div>
-    
-    <script>
-        const quotesAndMovies = [
-            { quote: "May the Force be with you.", movie: "Star Wars" },
-            { quote: "I'm going to make him an offer he can't refuse.", movie: "The Godfather" },
-            { quote: "Here's looking at you, kid.", movie: "Casablanca" },
-            { quote: "You can't handle the truth!", movie: "A Few Good Men" },
-            { quote: "I see dead people.", movie: "The Sixth Sense" },
-            { quote: "Houston, we have a problem.", movie: "Apollo 13" },
-            { quote: "You're gonna need a bigger boat.", movie: "Jaws" },
-            { quote: "I'll be back.", movie: "The Terminator" },
-            { quote: "I'm the king of the world!", movie: "Titanic" },
-            { quote: "Why so serious?", movie: "The Dark Knight" },
-            { quote: "To infinity and beyond!", movie: "Toy Story" },
-            { quote: "E.T. phone home.", movie: "E.T. the Extra-Terrestrial" },
-            { quote: "Here's Johnny!", movie: "The Shining" },
-            { quote: "I feel the need – the need for speed.", movie: "Top Gun" },
-            { quote: "I'm just a girl, standing in front of a boy, asking him to love her.", movie: "Notting Hill" },
-            { quote: "You talking to me?", movie: "Taxi Driver" },
-            { quote: "There's no place like home.", movie: "The Wizard of Oz" },
-            { quote: "I am your father.", movie: "Star Wars: Episode V - The Empire Strikes Back" },
-            { quote: "Say hello to my little friend!", movie: "Scarface" },
-            { quote: "I’ll have what she’s having.", movie: "When Harry Met Sally" },
-            { quote: "Life is like a box of chocolates. You never know what you're gonna get.", movie: "Forrest Gump" },
-            { quote: "You had me at hello.", movie: "Jerry Maguire" },
-            { quote: "I am Groot.", movie: "Guardians of the Galaxy" },
-            { quote: "I'll be back.", movie: "Terminator 2: Judgment Day" },
-            { quote: "I’m the king of the world!", movie: "Titanic" },
-            { quote: "I feel the need – the need for speed.", movie: "Top Gun" },
-            { quote: "I'm just a girl, standing in front of a boy, asking him to love her.", movie: "Notting Hill" },
-            { quote: "You talking to me?", movie: "Taxi Driver" },
-            { quote: "Here's looking at you, kid.", movie: "Casablanca" },
-            { quote: "May the Force be with you.", movie: "Star Wars" },
-            { quote: "You can't handle the truth!", movie: "A Few Good Men" },
-            { quote: "E.T. phone home.", movie: "E.T. the Extra-Terrestrial" },
-            { quote: "You had me at hello.", movie: "Jerry Maguire" },
-            { quote: "I see dead people.", movie: "The Sixth Sense" },
-            { quote: "I am your father.", movie: "Star Wars: Episode V - The Empire Strikes Back" },
-            { quote: "Say hello to my little friend!", movie: "Scarface" },
-            { quote: "There's no place like home.", movie: "The Wizard of Oz" },
-            { quote: "I’ll have what she’s having.", movie: "When Harry Met Sally" },
-            { quote: "You had me at hello.", movie: "Jerry Maguire" },
-            { quote: "I am Groot.", movie: "Guardians of the Galaxy" },
-            { quote: "I'm just a girl, standing in front of a boy, asking him to love her.", movie: "Notting Hill" },
-            { quote: "I'll be back.", movie: "The Terminator" },
-            { quote: "Life is like a box of chocolates. You never know what you're gonna get.", movie: "Forrest Gump" },
-            { quote: "You can't handle the truth!", movie: "A Few Good Men" },
-            { quote: "I am Groot.", movie: "Guardians of the Galaxy" },
-            { quote: "Here's Johnny!", movie: "The Shining" },
-            { quote: "I feel the need – the need for speed.", movie: "Top Gun" },
-            { quote: "To infinity and beyond!", movie: "Toy Story" },
-            { quote: "You talking to me?", movie: "Taxi Driver" },
-            { quote: "May the Force be with you.", movie: "Star Wars" },
-            { quote: "You had me at hello.", movie: "Jerry Maguire" },
-            { quote: "Here's looking at you, kid.", movie: "Casablanca" },
-            { quote: "I see dead people.", movie: "The Sixth Sense" },
-            { quote: "Say hello to my little friend!", movie: "Scarface" },
-            { quote: "I am Groot.", movie: "Guardians of the Galaxy" },
-            { quote: "You can't handle the truth!", movie: "A Few Good Men" },
-            { quote: "Life is like a box of chocolates. You never know what you're gonna get.", movie: "Forrest Gump" },
-            { quote: "E.T. phone home.", movie: "E.T. the Extra-Terrestrial" },
-            { quote: "I'll be back.", movie: "Terminator 2: Judgment Day" },
-            { quote: "To infinity and beyond!", movie: "Toy Story" },
-            { quote: "I'm just a girl, standing in front of a boy, asking him to love her.", movie: "Notting Hill" },
-            { quote: "Here's Johnny!", movie: "The Shining" },
-            { quote: "You talking to me?", movie: "Taxi Driver" },
-            { quote: "May the Force be with you.", movie: "Star Wars" },
-            { quote: "I am your father.", movie: "Star Wars: Episode V - The Empire Strikes Back" },
-            { quote: "I'm the king of the world!", movie: "Titanic" },
-            { quote: "You had me at hello.", movie: "Jerry Maguire" },
-            { quote: "Here's looking at you, kid.", movie: "Casablanca" },
-            { quote: "I feel the need – the need for speed.", movie: "Top Gun" },
-            { quote: "I’ll have what she’s having.", movie: "When Harry Met Sally" },
-            { quote: "I'm just a girl, standing in front of a boy, asking him to love her.", movie: "Notting Hill" },
-            { quote: "Say hello to my little friend!", movie: "Scarface" },
-            { quote: "I am Groot.", movie: "Guardians of the Galaxy" },
-            { quote: "You can't handle the truth!", movie: "A Few Good Men" },
-            { quote: "Life is like a box of chocolates. You never know what you're gonna get.", movie: "Forrest Gump" },
-            { quote: "Here's Johnny!", movie: "The Shining" },
-            { quote: "To infinity and beyond!", movie: "Toy Story" },
-            { quote: "E.T. phone home.", movie: "E.T. the Extra-Terrestrial" },
-            { quote: "I'm the king of the world!", movie: "Titanic" },
-            { quote: "I'm just a girl, standing in front of a boy, asking him to love her.", movie: "Notting Hill" },
-            { quote: "May the Force be with you.", movie: "Star Wars" },
-            { quote: "You had me at hello.", movie: "Jerry Maguire" },
-            { quote: "I am your father.", movie: "Star Wars: Episode V - The Empire Strikes Back" },
-            { quote: "Here's looking at you, kid.", movie: "Casablanca" },
-            { quote: "I see dead people.", movie: "The Sixth Sense" },
-            { quote: "You can't handle the truth!", movie: "A Few Good Men" },
-            { quote: "You talking to me?", movie: "Taxi Driver" },
-            { quote: "Say hello to my little friend!", movie: "Scarface" },
-            { quote: "I'll be back.", movie: "Terminator 2: Judgment Day" },
-            { quote: "I am Groot.", movie: "Guardians of the Galaxy" },
-            { quote: "I’ll have what she’s having.", movie: "When Harry Met Sally" },
-            { quote: "To infinity and beyond!", movie: "Toy Story" },
-            { quote: "Life is like a box of chocolates. You never know what you're gonna get.", movie: "Forrest Gump" },
-            { quote: "Here's Johnny!", movie: "The Shining" },
-            { quote: "I'm the king of the world!", movie: "Titanic" },
-            { quote: "E.T. phone home.", movie: "E.T. the Extra-Terrestrial" },
-            { quote: "May the Force be with you.", movie: "Star Wars" },
-            { quote: "I'm just a girl, standing in front of a boy, asking him to love her.", movie: "Notting Hill" },
-            { quote: "I am your father.", movie: "Star Wars: Episode V - The Empire Strikes Back" },
-            { quote: "You talking to me?", movie: "Taxi Driver" },
-            { quote: "Say hello to my little friend!", movie: "Scarface" },
-            { quote: "I’ll have what she’s having.", movie: "When Harry Met Sally" },
-            { quote: "I feel the need – the need for speed.", movie: "Top Gun" },
-            { quote: "You had me at hello.", movie: "Jerry Maguire" },
-            { quote: "Life is like a box of chocolates. You never know what you're gonna get.", movie: "Forrest Gump" }
-        ];
+</div>
 
-        document.getElementById('quizImage').addEventListener('click', () => {
-            const randomIndex = Math.floor(Math.random() * quotesAndMovies.length);
-            const quote = quotesAndMovies[randomIndex].quote;
-            const movie = quotesAndMovies[randomIndex].movie;
+<script>
+    // Question and answers data
+    const quizData = [
+        { question: "In which movie is the quote 'May the Force be with you.'?", answer: "Star Wars" },
+        { question: "Which movie features the quote 'I'm going to make him an offer he can't refuse.'?", answer: "The Godfather" },
+        { question: "What movie includes the line 'Here's looking at you, kid.'?", answer: "Casablanca" },
+        { question: "'You can't handle the truth!' is a famous quote from which film?", answer: "A Few Good Men" },
+        { question: "Which film has the quote 'I see dead people.'?", answer: "The Sixth Sense" },
+        { question: "'Houston, we have a problem.' is from which movie?", answer: "Apollo 13" },
+        { question: "In which film do they say, 'You're gonna need a bigger boat.'?", answer: "Jaws" },
+        { question: "'I'll be back.' is a notable line from which movie?", answer: "The Terminator" },
+        { question: "Which movie features the quote 'I'm the king of the world!'?", answer: "Titanic" },
+        { question: "'Why so serious?' comes from which film?", answer: "The Dark Knight" },
+        { question: "In which movie do they say, 'To infinity and beyond!'?", answer: "Toy Story" },
+        { question: "'E.T. phone home.' is a famous quote from which film?", answer: "E.T. the Extra-Terrestrial" },
+        { question: "Which movie has the line 'Here's Johnny!'?", answer: "The Shining" },
+        { question: "'I feel the need – the need for speed.' is a quote from which film?", answer: "Top Gun" },
+        { question: "'I'm just a girl, standing in front of a boy, asking him to love her.' is from which movie?", answer: "Notting Hill" },
+        { question: "In which film do they ask, 'You talking to me?'?", answer: "Taxi Driver" },
+        { question: "'There's no place like home.' is a memorable line from which movie?", answer: "The Wizard of Oz" },
+        { question: "'I am your father.' comes from which movie?", answer: "Star Wars: Episode V - The Empire Strikes Back" },
+        { question: "Which movie features the quote 'Say hello to my little friend!'?", answer: "Scarface" },
+        { question: "'I’ll have what she’s having.' is a famous line from which film?", answer: "When Harry Met Sally" },
+        { question: "'Life is like a box of chocolates. You never know what you're gonna get.' is a quote from which movie?", answer: "Forrest Gump" },
+        { question: "'You had me at hello.' comes from which film?", answer: "Jerry Maguire" },
+        { question: "'I am Groot.' is a memorable line from which movie?", answer: "Guardians of the Galaxy" },
+        { question: "'I'll be back.' is also said in which sequel movie?", answer: "Terminator 2: Judgment Day" }
+    ];
 
-            document.getElementById('question').innerText = `Quote: "${quote}"`;
-            document.getElementById('answer').innerText = `Movie: ${movie}`;
-        });
-    </script>
+    let currentQuestionIndex = 0;
+
+    // Shuffle the quiz data
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    // Start the quiz
+    shuffle(quizData);
+    showQuestion();
+
+    function showQuestion() {
+        const questionContainer = document.getElementById("question");
+        const answerContainer = document.getElementById("answer");
+
+        questionContainer.innerText = quizData[currentQuestionIndex].question;
+        answerContainer.innerText = "Loading answer...";
+
+        // Fade in effect
+        answerContainer.classList.remove("fadeIn");
+        answerContainer.classList.add("fadeOut");
+
+        setTimeout(() => {
+            answerContainer.innerText = quizData[currentQuestionIndex].answer;
+            answerContainer.classList.remove("fadeOut");
+            answerContainer.classList.add("fadeIn");
+        }, 500);
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizData.length) {
+            showQuestion();
+        } else {
+            const questionContainer = document.getElementById("question");
+            const answerContainer = document.getElementById("answer");
+            questionContainer.innerText = "Thank you for playing!";
+            answerContainer.innerText = "";
+            document.getElementById("next-button").style.display = "none"; // Hide the next button
+        }
+    }
+</script>
+
 </body>
 </html>

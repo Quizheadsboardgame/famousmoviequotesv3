@@ -108,30 +108,292 @@
 <script>
     // Question and answers data
     const quizData = [
-        { question: "In which movie is the quote 'May the Force be with you.'?", answer: "Star Wars" },
-        { question: "Which movie features the quote 'I'm going to make him an offer he can't refuse.'?", answer: "The Godfather" },
-        { question: "What movie includes the line 'Here's looking at you, kid.'?", answer: "Casablanca" },
-        { question: "'You can't handle the truth!' is a famous quote from which film?", answer: "A Few Good Men" },
-        { question: "Which film has the quote 'I see dead people.'?", answer: "The Sixth Sense" },
-        { question: "'Houston, we have a problem.' is from which movie?", answer: "Apollo 13" },
-        { question: "In which film do they say, 'You're gonna need a bigger boat.'?", answer: "Jaws" },
-        { question: "'I'll be back.' is a notable line from which movie?", answer: "The Terminator" },
-        { question: "Which movie features the quote 'I'm the king of the world!'?", answer: "Titanic" },
-        { question: "'Why so serious?' comes from which film?", answer: "The Dark Knight" },
-        { question: "In which movie do they say, 'To infinity and beyond!'?", answer: "Toy Story" },
-        { question: "'E.T. phone home.' is a famous quote from which film?", answer: "E.T. the Extra-Terrestrial" },
-        { question: "Which movie has the line 'Here's Johnny!'?", answer: "The Shining" },
-        { question: "'I feel the need – the need for speed.' is a quote from which film?", answer: "Top Gun" },
-        { question: "'I'm just a girl, standing in front of a boy, asking him to love her.' is from which movie?", answer: "Notting Hill" },
-        { question: "In which film do they ask, 'You talking to me?'?", answer: "Taxi Driver" },
-        { question: "'There's no place like home.' is a memorable line from which movie?", answer: "The Wizard of Oz" },
-        { question: "'I am your father.' comes from which movie?", answer: "Star Wars: Episode V - The Empire Strikes Back" },
-        { question: "Which movie features the quote 'Say hello to my little friend!'?", answer: "Scarface" },
-        { question: "'I’ll have what she’s having.' is a famous line from which film?", answer: "When Harry Met Sally" },
-        { question: "'Life is like a box of chocolates. You never know what you're gonna get.' is a quote from which movie?", answer: "Forrest Gump" },
-        { question: "'You had me at hello.' comes from which film?", answer: "Jerry Maguire" },
-        { question: "'I am Groot.' is a memorable line from which movie?", answer: "Guardians of the Galaxy" },
-        { question: "'I'll be back.' is also said in which sequel movie?", answer: "Terminator 2: Judgment Day" }
+{
+  "question": "In which movie is the quote 'May the Force be with you.'?", 
+  "answer": "Star Wars"
+},
+{
+  "question": "Which movie features the quote 'I'm going to make him an offer he can't refuse.'?", 
+  "answer": "The Godfather"
+},
+{
+  "question": "What movie includes the line 'Here's looking at you, kid.'?", 
+  "answer": "Casablanca"
+},
+{
+  "question": "'You can't handle the truth!' is a famous quote from which film?", 
+  "answer": "A Few Good Men"
+},
+{
+  "question": "Which film has the quote 'I see dead people.'?", 
+  "answer": "The Sixth Sense"
+},
+{
+  "question": "'Houston, we have a problem.' is from which movie?", 
+  "answer": "Apollo 13"
+},
+{
+  "question": "In which film do they say, 'You're gonna need a bigger boat.'?", 
+  "answer": "Jaws"
+},
+{
+  "question": "'I'll be back.' is a notable line from which movie?", 
+  "answer": "The Terminator"
+},
+{
+  "question": "Which movie features the quote 'I'm the king of the world!'?", 
+  "answer": "Titanic"
+},
+{
+  "question": "'Why so serious?' comes from which film?", 
+  "answer": "The Dark Knight"
+},
+{
+  "question": "In which movie do they say, 'To infinity and beyond!'?", 
+  "answer": "Toy Story"
+},
+{
+  "question": "Which movie has the line 'Here's Johnny!'?", 
+  "answer": "The Shining"
+},
+{
+  "question": "'I feel the need – the need for speed.' is a quote from which film?", 
+  "answer": "Top Gun"
+},
+{
+  "question": "'I'm just a girl, standing in front of a boy, asking him to love her.' is from which movie?", 
+  "answer": "Notting Hill"
+},
+{
+  "question": "In which film do they ask, 'You talking to me?'?", 
+  "answer": "Taxi Driver"
+},
+{
+  "question": "'There's no place like home.' is a memorable line from which movie?", 
+  "answer": "The Wizard of Oz"
+},
+{
+  "question": "'I am your father.' comes from which movie?", 
+  "answer": "Star Wars: Episode V - The Empire Strikes Back"
+},
+{
+  "question": "Which movie features the quote 'Say hello to my little friend!'?", 
+  "answer": "Scarface"
+},
+{
+  "question": "'I’ll have what she’s having.' is a famous line from which film?", 
+  "answer": "When Harry Met Sally"
+},
+{
+  "question": "'Life is like a box of chocolates. You never know what you're gonna get.' is a quote from which movie?", 
+  "answer": "Forrest Gump"
+},
+{
+  "question": "'You had me at hello.' comes from which film?", 
+  "answer": "Jerry Maguire"
+},
+{
+  "question": "'Hey, pretty girl. Time to wake up.' is a quote from which movie?", 
+  "answer": "Mulholland Drive"
+},
+{
+  "question": "'Life moves pretty fast. If you don't stop and look around once in a while, you could miss it.' is from which movie?", 
+  "answer": "Ferris Bueller's Day Off"
+},
+{
+  "question": "'There may be something there that wasn't there before.' is a line from which film?", 
+  "answer": "Beauty And The Beast"
+},
+{
+  "question": "'Rose, the keys. Just get the keys!' comes from which movie?", 
+  "answer": "Get Out"
+},
+{
+  "question": "'Separate and equal are two different things. Just 'cause it's the way, doesn't make it right, understand?' is from which movie?", 
+  "answer": "Hidden Figures"
+},
+{
+  "question": "'Isn't everything we do in life a way to be loved a little more?' comes from which movie?", 
+  "answer": "Before Sunrise"
+},
+{
+  "question": "'Hello Mark. So, what've you been up to for 20 years?' is a line from which film?", 
+  "answer": "T2 Trainspotting"
+},
+{
+  "question": "'No woman can truly love a man who listens to Phil Collins.' is from which movie?", 
+  "answer": "Sing Street"
+},
+{
+  "question": "'I didn't choose the skuxx life, the skuxx life chose me.' comes from which movie?", 
+  "answer": "Hunt For The Wilderpeople"
+},
+{
+  "question": "'If you wear a dress and have an animal sidekick, you're a princess.' is a quote from which movie?", 
+  "answer": "Moana"
+},
+{
+  "question": "'No man is free who is not master of himself.' comes from which film?", 
+  "answer": "A United Kingdom"
+},
+{
+  "question": "'Sigourney Weaver is going to help us!' is a line from which movie?", 
+  "answer": "Finding Dory"
+},
+{
+  "question": "'When you love someone, you have to be careful with it. You might never get it again.' is from which movie?", 
+  "answer": "Nocturnal Animals"
+},
+{
+  "question": "'Now that’s a proper introduction.' comes from which film?", 
+  "answer": "Arrival"
+},
+{
+  "question": "'Now Sid, don't you blame the movies. Movies don't create psychos. Movies make psychos more creative!' is a line from which movie?", 
+  "answer": "Scream"
+},
+{
+  "question": "'Anything can happen if you let it.' comes from which movie?", 
+  "answer": "Mary Poppins"
+},
+{
+  "question": "'My Daddy tames the dinosaurs.' is a line from which film?", 
+  "answer": "Deepwater Horizon"
+},
+{
+  "question": "'The words of our enemies aren't as awful as the silence of our friends.' is from which film?", 
+  "answer": "Audrie & Daisy"
+},
+{
+  "question": "'I can't go back and keep making same mistakes when I can make new ones!' is from which movie?", 
+  "answer": "Bridget Jones's Diary"
+},
+{
+  "question": "'That's some bad hat, Harry.' comes from which film?", 
+  "answer": "Jaws"
+},
+{
+  "question": "'Some might say I couldn't sing, but no one can say that I didn't sing.' is a quote from which movie?", 
+  "answer": "Florence Foster Jenkins"
+},
+{
+  "question": "'Look inside yourself and recognize that change starts with you.' is from which movie?", 
+  "answer": "Zootropolis"
+},
+{
+  "question": "'I'm not sure I agree with you a hundred percent on your police work there, Lou.' comes from which film?", 
+  "answer": "Fargo"
+},
+{
+  "question": "'Don’t. Cross. The streams. It would be bad.' is from which movie?", 
+  "answer": "Ghostbusters"
+},
+{
+  "question": "'Everyone's obscene, that's the whole point!' comes from which film?", 
+  "answer": "A Bigger Splash"
+},
+{
+  "question": "'In the words of AC/DC: We roll tonight... to the guitar bite... and for those about to rock... I salute you.' is from which movie?", 
+  "answer": "School Of Rock"
+},
+{
+  "question": "'I've been ready. My safe word is 'keep going.' is from which movie?", 
+  "answer": "Sisters"
+},
+{
+  "question": "'I mean, funny like I'm a clown? I amuse you?' comes from which movie?", 
+  "answer": "Goodfellas"
+},
+{
+  "question": "'I do wish we could chat longer, but... I'm having an old friend for dinner.' is from which film?", 
+  "answer": "Silence Of The Lambs"
+},
+{
+  "question": "'A boy's best friend is his mother.' is from which movie?", 
+  "answer": "Psycho"
+},
+{
+  "question": "'Mama says, 'Stupid is as stupid does.' comes from which film?", 
+  "answer": "Forrest Gump"
+},
+{
+  "question": "'Well, some people without brains do an awful lot of talking don't they?' is from which movie?", 
+  "answer": "The Wizard Of Oz"
+},
+{
+  "question": "'Well, you know what they say: if you don't have anything nice to say about anybody, come sit by me!' is from which movie?", 
+  "answer": "Steel Magnolias"
+},
+{
+  "question": "'If you build it, he will come.' is a line from which movie?", 
+  "answer": "Field Of Dreams"
+},
+{
+  "question": "'I never had any friends later on like the ones I had when I was 12. Jesus, does anyone?' is a line from which movie?", 
+  "answer": "Stand By Me"
+},
+{
+  "question": "'A relationship, I think, is like a shark. You know? It has to constantly move forward or it dies. And I think what we got on our hands is a dead shark.' comes from which movie?", 
+  "answer": "Annie Hall"
+},
+{
+  "question": "'If that plane leaves the ground and you're not with him, you'll regret it. Maybe not today. Maybe not tomorrow, but soon and for the rest of your life.' is from which film?", 
+  "answer": "Casablanca"
+},
+{
+  "question": "'I would love to stay here and talk with you... but I'm not going to.' comes from which movie?", 
+  "answer": "Groundhog Day"
+},
+{
+  "question": "'All those moments will be lost in time... like tears in rain.' comes from which film?", 
+  "answer": "Blade Runner"
+},
+{
+  "question": "'It's amazing. You look like a normal person but actually you are the angel of death.' is from which movie?", 
+  "answer": "When Harry Met Sally"
+},
+{
+  "question": "'Take her to the moon for me. Okay?' is from which film?", 
+  "answer": "Inside Out"
+},
+{
+  "question": "'Strange isn't it? Each man's life touches so many other lives. When he isn't around he leaves an awful hole doesn't he?' comes from which movie?", 
+  "answer": "It's A Wonderful Life"
+},
+{
+  "question": "'Mr Collins, I hope you've taken down that old TV antenna. I ripped my pants on it last year.' is from which movie?", 
+  "answer": "Miracle On 34th Street"
+},
+{
+  "question": "'Great, kid. Don't get cocky.' is from which film?", 
+  "answer": "Star Wars: Episode IV - A New Hope"
+},
+{
+  "question": "'Do I look like I give a damn?' is from which movie?", 
+  "answer": "Casino Royale"
+},
+{
+  "question": "'Now I have a machine gun. Ho. Ho. Ho.' comes from which film?", 
+  "answer": "Die Hard"
+},
+{
+  "question": "'Roads? Where we're going we don't need roads!' is from which movie?", 
+  "answer": "Back To The Future"
+},
+{
+  "question": "'Go to the Winchester, have a nice cold pint, and wait for all of this to blow over.' comes from which film?", 
+  "answer": "Shaun Of The Dead"
+},
+{
+  "question": "'Now you're looking for the secret, but you won't find it, because of course you're not really looking. You don't really want to know. You want to be fooled.' is from which movie?", 
+  "answer": "The Prestige"
+},
+{
+  "question": "'How do you like them apples?' is from which movie?", 
+  "answer": "Good Will Hunting"
+}
+
+
     ];
 
     let currentQuestionIndex = 0;
